@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SessionController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +16,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('layout.sideBar');
+    return view('layout.sidebar');
 });
+
+Route::get('/sesi',[SessionController::class,'index']);
+Route::get('/admin/dashboard',[DashboardController::class,'index'])->middleware('auth');
+Route::get('/admin/logout',[SessionController::class,'logout']);
+Route::post('/admin/login',[SessionController::class,'login']);

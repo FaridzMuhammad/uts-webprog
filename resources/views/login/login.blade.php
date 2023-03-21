@@ -15,21 +15,22 @@
         <div class="shape"></div>
         <div class="shape"></div>
     </div>
-    <form>
+    <div class="loginBox">
         <h3>Login Here</h3>
+        <form action="/admin/login" method="POST">
+            @csrf
+            <label for="email">Username</label>
+            <input type="email" value="{{ Session::get('email') }}" name="email" placeholder="Email" id="username">
 
-        <label for="username">Username</label>
-        <input type="text" placeholder="Email or Phone" id="username">
-
-        <label for="password">Password</label>
-        <input type="password" placeholder="Password" id="password">
-
-        <button>Log In</button>
-        <div class="social">
+            <label for="password">Password</label>
+            <input type="password" name="password" placeholder="Password" id="password">
+            <button name="submit" type="submit" href="">Log In</button>
+        </form>
+        {{-- <div class="social">
             <div class="go"><i class="fab fa-google"></i> Google</div>
             <div class="fb"><i class="fab fa-facebook"></i> Facebook</div>
-        </div>
-    </form>
+        </div> --}}
+    </div>
 </body>
 
 </html>
