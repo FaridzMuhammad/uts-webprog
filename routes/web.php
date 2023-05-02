@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\GoogleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,10 +17,17 @@ use App\Http\Controllers\DashboardController;
 */
 
 Route::get('/', function () {
-    return view('layout.sidebar');
+    return view('login.login');
 });
 
 Route::get('/sesi',[SessionController::class,'index']);
 Route::get('/admin/dashboard',[DashboardController::class,'index'])->middleware('auth');
 Route::get('/admin/logout',[SessionController::class,'logout']);
 Route::post('/admin/login',[SessionController::class,'login']);
+
+
+//goggle
+Route::prefix('google')->name('google.')->group(function(){
+    Route::get('/login',[GoogleController::class,'loginWithGoogle'])->name('login');
+    Route::any('/callback',[GoogleController::class,'callbackFromGoogle'])->name('callback');
+});
