@@ -16,22 +16,18 @@
         <div class="shape"></div>
     </div>
     <div class="loginBox">
-        <h3>Login Here</h3>
-        <form action="{{ route('login-proses') }}" method="POST">
+        <h3>Register Here</h3>
+        <form action="{{ route('register-proses') }}" method="POST">
             @csrf
+            <label for="email">Nama</label>
+            <input type="text" name="name" placeholder="name" id="username" value="{{ old('nama') }}">
             <label for="email">Email</label>
-            <input type="email" name="email" placeholder="Email" id="username">
-            @error('email')
-                <div>{{ $message }}</div>
-            @enderror
+            <input type="email" name="email" placeholder="Email" id="username" value="{{ old('email') }}">
             <label for="password">Password</label>
             <input type="password" name="password" placeholder="Password" id="password">
-            @error('password')
-                <div>{{ $message }}</div>
-            @enderror
             <div class="bot">
-                <a href="/register">Register</a>
-                <button class="submit" name="submit" type="submit" href="">Log In</button>
+                <a href="/login">Login</a>
+                <button class="submit" name="submit" type="submit" href="">Submit</button>
             </div>
         </form>
     </div>

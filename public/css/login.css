@@ -40,7 +40,6 @@ body{
     bottom: -80px;
 }
 .loginBox{
-    height: 520px;
     width: 400px;
     background-color: rgba(255,255,255,0.13);
     position: absolute;
@@ -51,7 +50,7 @@ body{
     backdrop-filter: blur(10px);
     border: 2px solid rgba(255,255,255,0.1);
     box-shadow: 0 0 40px rgba(8,7,16,0.6);
-    padding: 50px 35px;
+    padding: 35px 35px;
 }
 .loginBox *{
     font-family: 'Open Sans', sans-serif;
@@ -87,22 +86,22 @@ input{
 ::placeholder{
     color: #e5e5e5;
 }
-button{
+.submit{
     margin-top: 50px;
-    width: 100%;
+    width: 100px;
     background-color: rgba(255,255,255,0.27);
     color: #ffffff;
-    padding: 15px 0;
+    padding: 10px 0;
     font-size: 18px;
     font-weight: 600;
     border-radius: 5px;
     cursor: pointer;
 }
 .social{
-  margin-top: 30px;
+  margin-top: 35px;
   display: flex;
 }
-.social div{
+.social a{
   background: red;
   width: 150px;
   border-radius: 3px;
@@ -110,13 +109,34 @@ button{
   background-color: rgba(255,255,255,0.27);
   color: #eaf0fb;
   text-align: center;
+  text-decoration: none;
 }
-.social div:hover{
+.social a:hover{
   background-color: rgba(255,255,255,0.47);
 }
 .social .fb{
   margin-left: 25px;
 }
+
+
 .social i{
   margin-right: 4px;
+}
+
+.go {
+    font-size: 16px;
+    font-weight: 800;
+    text-align: center;
+}
+
+.under {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.bot {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
 }

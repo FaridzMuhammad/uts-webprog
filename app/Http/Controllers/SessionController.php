@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use App\Models\User;
 
 class SessionController extends Controller
 {
@@ -12,29 +13,59 @@ class SessionController extends Controller
         return view('login.login');
     }
 
-    function login(Request $request){
-        Session::flash('email',$request->email);
+    public function login_proses(Request $request){
         $request->validate([
             'email'=>'required|email',
-            'password'=>'required|min:5|max:12'
-        ],[
-            'email.required'=>'Email harus diisi',
-            'password.required'=>'Password harus diisi',
+            'password'=>'required'
         ]);
 
-        $infologin = [
+        $data = [
             'email'=>$request->email,
             'password'=>$request->password
         ];
 
-        if (auth()->attempt($infologin)) {
-            return redirect('admin/dashboard')->with('success','Login berhasil');
+        if(Auth::attempt($data)){
+            return redirect() -> intended('/view/dashboard');
         }else{
-            return redirect('admin')->withErrors('Username dan Password salah');
+            return redirect() -> route('login');
         }
     }
-    function logout(){
+
+    public function logout(){
+        Session::flush();
         Auth::logout();
-        return redirect('admin')->with('success','Logout berhasil');
+        return redirect('login');
+    }
+
+    public function register(){
+        return view('login.register');
+    }
+
+    public function register_proses(Request $request){
+        $request->validate([
+            'name'=>'required',
+            'email'=>'required|email|unique:users,email',
+            'password'=>'required|min:8',
+        ]);
+
+        $data = [
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'password'=>bcrypt($request->password)
+        ];
+
+        User::create($data);
+
+        $login = [
+            'email'=>$request->email,
+            'password'=>$request->password
+        ];
+
+        if (Auth::attempt($login)) {
+            return redirect('/view/dashboard');
+        }else{
+            return redirect('/login');
+        }
+
     }
 }
