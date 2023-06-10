@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\skill;
+use App\Models\Category;
 
 class SkillController extends Controller
 {
@@ -11,14 +12,17 @@ class SkillController extends Controller
 
     public function index()
     {
-        $skill = skill::all();
-        return view('content.skill', ['skill' => $skill]);
+        $skill = Skill::with('category')->get();
+        $category = Category::all();
+        return view('content.skill', [
+            'skill' => $skill,
+            'category' => $category
+        ]);
     }
 
     public function create(Request $request)
     {
         $skill = skill::create($request->all());
-
         return back()->with('success', 'Skill berhasil ditambahkan');
     }
 
@@ -26,9 +30,9 @@ class SkillController extends Controller
     {
         $skill = skill::find($id);
         $skill->title = $request->title;
+        $skill->category_id = $request->category_id;
         $skill->percentage = $request->percentage;
         $skill->save();
-
         return back()->with('success', 'Skill berhasil diupdate');
     }
 
