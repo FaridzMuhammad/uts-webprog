@@ -13,4 +13,5 @@ class DashboardController extends Controller
         $skill = skill::all();
         return view('dashboard.dashboard', ['skill' => $skill]);
     }
+
 }

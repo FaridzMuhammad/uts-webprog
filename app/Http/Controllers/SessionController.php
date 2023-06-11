@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Http;
 use App\Models\User;
 
 class SessionController extends Controller
@@ -19,15 +20,20 @@ class SessionController extends Controller
             'password'=>'required'
         ]);
 
-        $data = [
-            'email'=>$request->email,
-            'password'=>$request->password
-        ];
+        $response = Http::post('http://localhost:3000/api/login', [
+            'email' => $request->email,
+            'password' => $request->password,
+        ]);
 
-        if(Auth::attempt($data)){
-            return redirect() -> intended('/view/dashboard');
-        }else{
-            return redirect() -> route('login');
+        $data = json_decode($response->body(), true);
+
+        if ($data['authorization']['token']) {
+            $request->session()->put('token', $data['authorization']['token']);
+
+            return redirect()->route('dashboard');
+        }
+        else {
+            return redirect()->route('login');
         }
     }
 

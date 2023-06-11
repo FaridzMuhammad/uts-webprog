@@ -10,22 +10,22 @@
                 <h6 class="mb-0">Category Information</h6>
             </div>
             <div class="card-body pt-4 p-3">
-                @foreach ($category as $item)
+                @foreach ($category['category'] as $item)
                     <ul class="list-group">
                         <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
                             <div class="d-flex flex-column">
-                                <h5 class="mb-3 text-sm">{{ $item->name }}</h5>
+                                <h5 class="mb-3 text-sm">{{ $item['name'] }}</h5>
                             </div>
                             <div class="ms-auto text-end"
                                 style="display: flex;
                             align-items: baseline;">
                                 <a class="btn btn-link text-danger text-gradient px-3 mb-0"
-                                    href="{{ route('category.delete', $item->id) }}"><i class="far fa-trash-alt me-2"
+                                    href="{{ route('category.delete', $item['id']) }}"><i class="far fa-trash-alt me-2"
                                         aria-hidden="true"></i>Delete</a>
                                 <button type="button" class="btn bg-gradient-success" data-bs-toggle="modal"
-                                    data-bs-target="#modal-form-edit-{{ $item->id }}">Edit
+                                    data-bs-target="#modal-form-edit-{{ $item['id'] }}">Edit
                                 </button>
-                                <div class="modal fade" id="modal-form-edit-{{ $item->id }}" tabindex="-1"
+                                <div class="modal fade" id="modal-form-edit-{{ $item['id']}}" tabindex="-1"
                                     role="dialog" aria-labelledby="modal-form" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered modal-md" role="document">
                                         <div class="modal-content">
@@ -38,7 +38,7 @@
                                                     </div>
                                                     <div class="card-body">
                                                         <form role="form text-left" method="POST"
-                                                            action="{{ route('category.update', $item->id) }}"
+                                                            action="{{ route('category.update', $item['id']) }}"
                                                             enctype="multipart/form-data">
                                                             <div
                                                                 style="display: flex;
@@ -50,7 +50,7 @@
                                                                     <input type="text" class="form-control"
                                                                         placeholder="Title" aria-label="Title"
                                                                         aria-describedby="email-addon" name="name"
-                                                                        value="{{ $item->name }}">
+                                                                        value="{{ $item['name'] }}">
                                                                 </div>
                                                             </div>
                                                             <div class="text-center">

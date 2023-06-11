@@ -32,7 +32,7 @@ Route::get('/', function () {
     return view('login.login');
 });
 
-Route::group(['middleware' => ['auth']], function () {
+Route::group(['middleware' => ['auth.web']], function () {
     Route::get('/view/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     //skill
     Route::get('/skill', [SkillController::class, 'index']);
