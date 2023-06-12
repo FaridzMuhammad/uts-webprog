@@ -14,7 +14,7 @@
                     <ul class="list-group">
                         <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
                             <div class="d-flex flex-column">
-                                <h5 class="mb-3 text-sm">{{ $item['name'] }}</h5>
+                                <span class="mb-2 text-sm"> Category </span><h5 class="mb-3 text-sm">{{ $item['name'] }}</h5>
                             </div>
                             <div class="ms-auto text-end"
                                 style="display: flex;

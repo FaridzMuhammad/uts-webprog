@@ -11,9 +11,22 @@ class SkillApiController extends Controller
 {
     public function index()
     {
-        $skill = skill::all();
+        $skill = skill::with('category')->get();
+
+        $dataSkill = [];
+        foreach ($skill as $value) {
+            $data = [
+                'id' => $value->id,
+                'title' => $value->title,
+                'category_id' => $value->category_id,
+                'category_name' => $value->category->name,
+                'percentage' => $value->percentage,
+            ];
+            array_push($dataSkill, $data);
+        }
+
         return response()->json(
-            $skill,
+            $dataSkill,
         );
     }
 

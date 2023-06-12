@@ -113,12 +113,13 @@
                 @foreach ($skill as $item)
                     <div class="col-md-6">
                         <div class="px-lg-3">
+                            <h4 class="wow fadeInUp">{{ $item['category_name'] }}</h4>
                             <div class="progress-wrapper wow fadeInUp">
-                                <span class="caption">{{ $item->title }}</span>
+                                <span class="caption">{{ $item['title']}}</span>
                                 <div class="progress">
                                     <div class="progress-bar" role="progressbar"
-                                        style="width: {{ $item->percentage }}%;" aria-valuenow="75"
-                                        aria-valuemin="0" aria-valuemax="100">{{ $item->percentage }}%</div>
+                                        style="width: {{ $item['percentage'] }}%" aria-valuenow="75"
+                                        aria-valuemin="0" aria-valuemax="100">{{ $item['percentage'] }}%</div>
                                 </div>
                             </div>
                         </div>
@@ -126,6 +127,28 @@
                 @endforeach
             </div>
         </div>
+        {{-- <div class="container py-5">
+            <h1 class="text-center fw-normal wow fadeIn">My Skills</h1>
+            @foreach ($skill as $item)
+                <div class="row py-3">
+                    <div class="col-md-6">
+                        <div class="px-lg-3">
+
+                            <h4 class="wow fadeInUp">{{ $item['category_name'] }}
+                                <div class="progress-wrapper wow fadeInUp">
+                                    <span class="caption">{{ $item['title'] }}</span>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar"
+                                            style="{{ $item['percentage'] }}" aria-valuenow="75" aria-valuemin="0"
+                                            aria-valuemax="100">{{ $item['percentage'] }}</div>
+                                    </div>
+                                </div>
+
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div> --}}
         <div class="container pt-5">
             <div class="row">
                 <div class="col-md-6 wow fadeInRight">

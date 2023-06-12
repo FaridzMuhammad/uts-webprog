@@ -14,8 +14,8 @@
                     <ul class="list-group">
                         <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
                             <div class="d-flex flex-column">
-                                <h5 class="mb-3 text-sm">{{ $item['title'] }}</h5>
-                                <h5 class="mb-3 text-sm">{{ $item['category_id'] }}</h5>
+                                <span class="mb-2 text-sm"> Category </span><h5 class="mb-3 text-sm">{{ $item['category_name'] }}</h5>
+                                <span class="mb-2 txet-sm"> Skill </span><h5 class="mb-3 text-sm">{{ $item['title'] }}</h5>
                                 <span class="mb-2 text-sm">Percentage<span
                                         class="ms-sm-2 text-dark font-weight-bold">{{ $item['percentage'] }}</span></span>
                             </div>

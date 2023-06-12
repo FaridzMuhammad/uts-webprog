@@ -23,7 +23,11 @@ class SkillController extends Controller
 
     public function create(Request $request)
     {
-        $data = Http::withToken(session('token')) -> get('http://localhost:3000/api/skill');
+        $data = Http::withToken(session('token')) -> post('http://localhost:3000/api/skill', [
+            'title' => $request->title,
+            'category_id' => $request->category_id,
+            'percentage' => $request->percentage,
+        ]);
         $skill = json_decode($data->body(), true);
 
         return back()->with('success', 'Skill berhasil ditambahkan');
