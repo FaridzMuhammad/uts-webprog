@@ -10,7 +10,7 @@
                 <h6 class="mb-0">Category Information</h6>
             </div>
             <div class="card-body pt-4 p-3">
-                @foreach ($category['category'] as $item)
+                @foreach ($category as $item)
                     <ul class="list-group">
                         <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
                             <div class="d-flex flex-column">

@@ -20,12 +20,12 @@
         <form action="{{ route('login-proses') }}" method="POST">
             @csrf
             <label for="email">Email</label>
-            <input type="email" name="email" placeholder="Email" id="username">
+            <input type="email" name="email" placeholder="Email">
             @error('email')
                 <div>{{ $message }}</div>
             @enderror
             <label for="password">Password</label>
-            <input type="password" name="password" placeholder="Password" id="password">
+            <input type="password" name="password" placeholder="Password" >
             @error('password')
                 <div>{{ $message }}</div>
             @enderror

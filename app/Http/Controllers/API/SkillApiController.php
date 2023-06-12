@@ -4,57 +4,48 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Skill;
 use App\Models\Category;
 
-class CategoryApiController extends Controller
+class SkillApiController extends Controller
 {
     public function index()
     {
-        $category = category::all();
+        $skill = skill::all();
         return response()->json(
-            $category,
+            $skill,
         );
     }
 
     public function store(Request $request)
     {
-        $category = category::create($request->all());
+        $skill = skill::create($request->all());
         return response()->json([
-            'category' => $category,
+            'skill' => $skill,
         ]);
     }
 
-
     public function update(Request $request, $id)
     {
+        $skill = skill::find($id);
         $category = category::find($id);
         // dd($request->all());
-        $category = $category->update($request->all());
+        $skill = $skill->update($request->all());
 
-        if ($category) {
+        if ($skill) {
             return response()->json([
                 'success' => true,
-                'message' => 'Category Updated',
+                'message' => 'Skill Updated',
             ], 200);
         } else {
             return response()->json([
                 'success' => false,
-                'message' => 'Category Not Updated',
+                'message' => 'Skill Not Updated',
             ], 500);
         }
 
         return response()->json([
-            'category' => $category,
-        ]);
-    }
-
-    public function destroy($id)
-    {
-        $category = category::find($id);
-        $category->delete();
-
-        return response()->json([
-            'category' => $category,
+            'skill' => $skill,
         ]);
     }
 }

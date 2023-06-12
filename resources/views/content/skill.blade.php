@@ -14,20 +14,21 @@
                     <ul class="list-group">
                         <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
                             <div class="d-flex flex-column">
-                                <h5 class="mb-3 text-sm">{{ $item->title }}</h5>
+                                <h5 class="mb-3 text-sm">{{ $item['title'] }}</h5>
+                                <h5 class="mb-3 text-sm">{{ $item['category_id'] }}</h5>
                                 <span class="mb-2 text-sm">Percentage<span
-                                        class="ms-sm-2 text-dark font-weight-bold">{{ $item->percentage }}</span></span>
+                                        class="ms-sm-2 text-dark font-weight-bold">{{ $item['percentage'] }}</span></span>
                             </div>
                             <div class="ms-auto text-end"
                                 style="display: flex;
                             align-items: baseline;">
                                 <a class="btn btn-link text-danger text-gradient px-3 mb-0"
-                                    href="{{ route('skill.delete', $item->id) }}"><i class="far fa-trash-alt me-2"
+                                    href="{{ route('skill.delete', $item['id']) }}"><i class="far fa-trash-alt me-2"
                                         aria-hidden="true"></i>Delete</a>
                                 <button type="button" class="btn bg-gradient-success" data-bs-toggle="modal"
-                                    data-bs-target="#modal-form-edit-{{ $item->id }}">Edit
+                                    data-bs-target="#modal-form-edit-{{ $item['id'] }}">Edit
                                 </button>
-                                <div class="modal fade" id="modal-form-edit-{{ $item->id }}" tabindex="-1"
+                                <div class="modal fade" id="modal-form-edit-{{ $item['id'] }}" tabindex="-1"
                                     role="dialog" aria-labelledby="modal-form" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered modal-md" role="document">
                                         <div class="modal-content">
@@ -40,7 +41,7 @@
                                                     </div>
                                                     <div class="card-body">
                                                         <form role="form text-left" method="POST"
-                                                            action="{{ route('skill.update', $item->id) }}"
+                                                            action="{{ route('skill.update', $item['id']) }}"
                                                             enctype="multipart/form-data">
                                                             <div
                                                                 style="display: flex;
@@ -52,14 +53,15 @@
                                                                     <input type="text" class="form-control"
                                                                         placeholder="Title" aria-label="Title"
                                                                         aria-describedby="email-addon" name="title"
-                                                                        value="{{ $item->title }}">
+                                                                        value="{{ $item['title'] }}">
                                                                 </div>
                                                                 <label>Category</label>
                                                                 <div class="input-group mb-3">
                                                                     <select class="form-control" name="category_id">
                                                                         @foreach ($category as $categorys)
-                                                                            <option value="{{ $categorys->id }}""
-                                                                            >{{ $categorys->name }}</option>
+                                                                            <option value="{{ $categorys['id'] }}">
+                                                                                {{ $categorys['name'] }}
+                                                                            </option>
                                                                         @endforeach
                                                                     </select>
                                                                 </div>
@@ -68,7 +70,7 @@
                                                                     <input type="text" class="form-control"
                                                                         placeholder="Title" aria-label="Title"
                                                                         aria-describedby="email-addon" name="percentage"
-                                                                        value="{{ $item->percentage }}">
+                                                                        value="{{ $item['percentage'] }}">
                                                                 </div>
                                                             </div>
                                                             <div class="text-center">
@@ -110,8 +112,8 @@
                             <div class="input-group mb-3">
                                 <select class="form-control" name="category_id" required>
                                     @foreach ($category as $categorys)
-                                            <option value="{{ $categorys->id }}" selected>
-                                                {{ $categorys->name }}
+                                            <option value="{{ $categorys['id']}}" selected>
+                                                {{ $categorys['name']}}
                                             </option>
                                     @endforeach
                                 </select>
