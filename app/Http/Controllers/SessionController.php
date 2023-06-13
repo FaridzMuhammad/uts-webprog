@@ -37,10 +37,10 @@ class SessionController extends Controller
         }
     }
 
+    //logout
     public function logout(){
         Session::flush();
-        Auth::logout();
-        return redirect('login');
+        return redirect('/login');
     }
 
     public function register(){

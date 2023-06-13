@@ -52,11 +52,11 @@ class SkillController extends Controller
     }
 
 
+    //public function destroy($id)
     public function delete($id)
     {
-        $data = Http::withToken(session('token'))->delete('http://localhost:3000/api/skill/' . $id);
+        $data = Http::withToken(session('token'))->get('http://localhost:3000/api/skill/' . $id);
         $skill = json_decode($data->body(), true);
-
         return back()->with('success', 'Skill berhasil dihapus');
     }
 }

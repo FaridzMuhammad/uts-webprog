@@ -61,4 +61,14 @@ class SkillApiController extends Controller
             'skill' => $skill,
         ]);
     }
+
+    public function destroy($id)
+    {
+        $skill = skill::find($id);
+        $skill->delete();
+
+        return response()->json([
+            'skill' => $skill,
+        ]);
+    }
 }
